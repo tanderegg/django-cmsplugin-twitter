@@ -1,0 +1,25 @@
+<ul id="{{ object.username }}-twitter-feed" class="twitter-feed">
+    <hr />
+    {% for tweet in feed %}
+    <li>
+        <h4>@{{ object.username }}</h4>
+        <p>{{ tweet.text }}</p>
+        <p class="tweet-posted-on">
+            Posted on {{ tweet.created_at|date:"d M" }}
+        </p>
+
+        <ul class="tweet-links">
+            <li>
+                <a href="https://twitter.com/intent/tweet?in_reply_to={{ tweet.id }}" target="_blank">Reply</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/intent/retweet?tweet_id={{ tweet.id }}" target="_blank">Retweet</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/intent/favorite?tweet_id={{ tweet.id }}" target="_blank">Favorite</a>
+            </li>
+        </ul>
+        <hr />
+    </li>
+    {% endfor %}
+</ul>
